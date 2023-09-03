@@ -10,6 +10,7 @@ import pandas as pd
 import numpy as np
 import os
 import datetime
+from country_converter import CountryConverter
 
 # set your path to the project folder
 path = "/files/Data/"
@@ -90,6 +91,11 @@ filtered_df = filtered_df.rename(columns={
     'Data.Smokers.Female': 'Number of Female Smokers',
     'Data.Smokers.Male': 'Number of Male Smokers'
 })
+# Create a CountryConverter instance
+cc = CountryConverter()
+
+# Add a new "Continent" column to the DataFrame
+filtered_df['Continent'] = filtered_df['Country Name'].apply(lambda x: cc.convert(names=x, to='continent'))
 
 # save to CSV
 filtered_df.to_csv(path+'gdp_smoking.csv', encoding='utf-8', index=False)
