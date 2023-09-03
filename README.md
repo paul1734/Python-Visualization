@@ -1,4 +1,4 @@
-# Python_Visualization
+# Python Visualization
 
 This is used to demonstrate some different visualizations using open accessible data.
 
