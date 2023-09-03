@@ -25,13 +25,13 @@ gdp_orig = pd.read_csv("GDP.csv", header=2)
 ###  Data Cleaning & Merging ##
 ###############################
 
-# drop unnamed column at the end with nan
+# Drop unnamed column at the end with nan
 gdp_orig = gdp_orig.drop(['Unnamed: 67'], axis=1)
-# change to long format
-# only take the years from the columns
+# Change to long format
+# Only take the years from the columns
 years=list(gdp_orig.columns[4:])
 
-# use pd.melt to unpivot all the year columns
+# Use pd.melt to unpivot all the year columns
 # ID variable as Country Name & Country Code
 # Value_vars is Years (all columns are from 1960-2022 with the value_name GDPpC
 gdp_long = pd.melt(gdp_orig,id_vars=['Country Name','Country Code'],\
@@ -46,10 +46,10 @@ smoking = smoking_orig.convert_dtypes()
 # Check if it worked: Yes!
 print(gdp_long.dtypes)
 print(smoking.dtypes)
-# drop all years before 1980 (smoking.csv starts at 1980)
+# Drop all years before 1980 (smoking.csv starts at 1980)
 gdp_long = gdp_long[gdp_long['Year'] >= 1980]
 
-# MERGE smoking and gdp_long
+# Merge smoking and gdp_long
 # Join on Country names and check if they are equal or not
 combined_df = gdp_long.merge(smoking, \
 left_on=["Country Name","Year"], right_on=["Country","Year"], how="left")
