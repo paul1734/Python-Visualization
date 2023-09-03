@@ -46,10 +46,10 @@ smoking = smoking_orig.convert_dtypes()
 # Check if it worked: Yes!
 print(gdp_long.dtypes)
 print(smoking.dtypes)
-# Drop all years before 1980 (smoking.csv starts at 1980)
-gdp_long = gdp_long[gdp_long['Year'] >= 1980]
 
 # Merge smoking and gdp_long
+# Drop all years before 1980 (smoking.csv starts at 1980)
+gdp_long = gdp_long[gdp_long['Year'] >= 1980]
 # Join on Country names and check if they are equal or not
 combined_df = gdp_long.merge(smoking, \
 left_on=["Country Name","Year"], right_on=["Country","Year"], how="left")
