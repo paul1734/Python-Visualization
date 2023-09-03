@@ -98,7 +98,7 @@ filtered_df['Continent'] = filtered_df['Country Name'].apply(lambda x: cc.conver
 
 # The value World was still in the Country column, therefore it needed to be 
 # dropped for the analysis.
-df_only_continents = df[df.Continent != 'not found']
+df_only_continents = filtered_df[filtered_df.Continent != 'not found']
 
 # save to CSV
 filtered_df.to_csv(path+'gdp_smoking.csv', encoding='utf-8', index=False)
