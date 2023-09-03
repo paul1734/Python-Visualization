@@ -93,9 +93,13 @@ filtered_df = filtered_df.rename(columns={
 })
 # Create a CountryConverter instance
 cc = CountryConverter()
-
 # Add a new "Continent" column to the DataFrame
 filtered_df['Continent'] = filtered_df['Country Name'].apply(lambda x: cc.convert(names=x, to='continent'))
+
+# The value World was still in the Country column, therefore it needed to be 
+# dropped for the analysis.
+df_world = df.copy()
+df_only_continents = df_world[df_world.Continent != 'not found']
 
 # save to CSV
 filtered_df.to_csv(path+'gdp_smoking.csv', encoding='utf-8', index=False)
