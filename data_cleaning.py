@@ -12,7 +12,7 @@ import os
 import datetime
 from country_converter import CountryConverter
 
-# set your path to the project folder
+# Set your path to the project folder
 path = "/files/Data/"
 os.chdir(path)
 
