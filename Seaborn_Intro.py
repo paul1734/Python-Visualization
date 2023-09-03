@@ -7,19 +7,14 @@ import plotly.express as px
 path = "/files/Data/"
 os.chdir(path)
 
-df = pd.read_csv(path +'gdp_smoking.csv')
-# The value World was still in the Country column, therefore it needed to be 
-# dropped for the analysis.
-df_world = df.copy()
-df_only_continents = df_world[df_world.Continent != 'not found']
+df = pd.read_csv(path +'gdp_smoking_continents.csv')
 
 # Create displots for each continent
-
 g = sns.displot(
     data=df_only_continents,
-    x="Daily Cigarette Consumption", hue="Continent",
+    x="Percentage of Total Smokers", hue="Continent",
     kind="kde", height=6,
     multiple="fill", clip=(0, None),
     palette="tab10",
 )
-g.fig.suptitle('Distribution of Sum of Total Smokers by Continent Over Years', y=1.02)
+g.fig.suptitle('Distribution of Total Smokers by Continent', y=1.02)
